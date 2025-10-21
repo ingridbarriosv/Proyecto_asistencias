@@ -1,0 +1,10 @@
+# Ignorar claves y datos sensibles
+data/clave_sheets.json
+
+# Archivos de datos locales
+*.xlsx
+*.csv
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
