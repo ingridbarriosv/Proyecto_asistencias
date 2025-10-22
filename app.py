@@ -151,7 +151,7 @@ def cargar_base():
     return df
 
 df_codigos = cargar_base()
-
+st.write(st.secrets.keys())
 # --- CONEXIÓN A GOOGLE SHEETS ---
 @st.cache_resource
 def conectar_google_sheets():
