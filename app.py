@@ -301,7 +301,7 @@ if st.session_state.guardado is False:
                     str(codigo_num),
                     str(codigo_opcion),
                     str(nombre_real.strip()),
-                    str(int(venta)),
+                    float(venta),
                     str(st.session_state.zona),
                     str(st.session_state.supervisora)
                 ])
@@ -380,7 +380,7 @@ if st.session_state.get("confirmar_cero", False) and venta == 0:
                     str(codigo_num),
                     str(codigo_opcion),
                     str(nombre_real.strip()),
-                    str(int(venta)),
+                    float(venta),
                     str(st.session_state.zona),
                     str(st.session_state.supervisora)
                 ])
