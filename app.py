@@ -4,8 +4,10 @@ from datetime import date
 import os
 import base64
 import gspread
+import json
 from google.oauth2.service_account import Credentials
 from google.oauth2 import service_account
+
 
 
 
@@ -153,8 +155,10 @@ df_codigos = cargar_base()
 # --- CONEXIÓN A GOOGLE SHEETS ---
 @st.cache_resource
 def conectar_google_sheets():
-    cred = service_account.Credentials.from_service_account_file(
-        "data/clave_sheets.json", 
+    cred_json = st.secrets["GOOGLE_SHEETS_KEY"]
+    cred_dict = json.loads(cred_json)
+    cred = service_account.Credentials.from_service_account_info(
+        cred_dict,
         scopes=["https://www.googleapis.com/auth/spreadsheets"]
     )
     cliente = gspread.authorize(cred)
