@@ -155,8 +155,7 @@ df_codigos = cargar_base()
 # --- CONEXIÓN A GOOGLE SHEETS ---
 @st.cache_resource
 def conectar_google_sheets():
-    cred_json = st.secrets["GOOGLE_SHEETS_KEY"]
-    cred_dict = json.loads(cred_json)
+    cred_dict = json.loads(st.secrets["GOOGLE_SHEETS_KEY"])
     cred = service_account.Credentials.from_service_account_info(
         cred_dict,
         scopes=["https://www.googleapis.com/auth/spreadsheets"]
@@ -164,6 +163,7 @@ def conectar_google_sheets():
     cliente = gspread.authorize(cred)
     hoja = cliente.open_by_key("1mff_oUQpx2SU_sG_bMZ5ZJ0rXZzQ_NMAiR1HtIYoS6A").worksheet("Asistencias")
     return hoja
+
 
 hoja = conectar_google_sheets()
 
