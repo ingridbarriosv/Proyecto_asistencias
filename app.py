@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 from datetime import date
+from datetime import datetime, timedelta
+import pytz
 import os
 import base64
 import gspread
@@ -172,7 +174,8 @@ hoja = conectar_google_sheets()
 
 # ---------------------------------------------------------------------------------
 # FECHA
-fecha = date.today()
+zona_colombia = pytz.timezone("America/Bogota")
+fecha = datetime.now(zona_colombia).date()
 st.markdown(f'<div class="date-badge">Fecha registrada automáticamente: {fecha}</div>', unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------------
