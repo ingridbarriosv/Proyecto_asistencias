@@ -147,13 +147,15 @@ st.title("Registro de Asistencia Comercial MOMA Y MANTRA")
 # ---------------------------------------------------------------------------------
 # CARGA DE BASE DE CÓDIGOS
 @st.cache_data
-def cargar_base():
-    ruta = "data/Base_codigos.xlsx"
+def cargar_base(ruta, mtime):
     df = pd.read_excel(ruta, sheet_name="Base_codigos")
+    df["nombre_tienda"] = df["nombre_tienda"].astype(str).str.strip()
     return df
-
-df_codigos = cargar_base()
+ruta = "data/Base_codigos.xlsx"
+mtime = os.path.getmtime(ruta)
+df_codigos = cargar_base(ruta, mtime)
 # st.write(st.secrets.keys())
+
 # --- CONEXIÓN A GOOGLE SHEETS ---
 @st.cache_resource
 def conectar_google_sheets():
