@@ -52,6 +52,15 @@ div[data-testid="stTextInput"] > div > div > input {
     color: #16150F !important; height: 52px !important;
     padding: 0 20px !important; box-sizing: border-box !important;
 }
+/* Venta — número grande */
+div[data-testid="stTextInput"]:has(input[aria-label="Venta"]) > div > div > input,
+div[data-testid="stTextInput"]:last-of-type > div > div > input {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px !important;
+    text-align: right !important;
+    padding: 0 20px !important;
+}
 div[data-testid="stTextInput"] > div > div > input:focus {
     border-color: #2A4D0F !important;
     box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important; background: #fff !important;
@@ -60,19 +69,8 @@ div[data-testid="stTextInput"] > div > div > input::placeholder {
     color: #CACAC5 !important; font-weight: 400 !important;
 }
 
-div[data-testid="stNumberInput"] > div {
-    border: 1.5px solid #E0DED9 !important; border-radius: 12px !important;
-    background: #FAFAFA !important; height: 52px !important;
-    overflow: hidden !important;
-}
-div[data-testid="stNumberInput"] > div > div > input {
-    font-family: Outfit,sans-serif !important; font-size: 26px !important;
-    font-weight: 800 !important; background: transparent !important;
-    color: #16150F !important; text-align: right !important;
-    border: none !important; box-shadow: none !important;
-    height: 52px !important; padding: 0 20px !important;
-    letter-spacing: -1px !important;
-}
+/* Ocultar number input — reemplazado por text_input */
+div[data-testid="stNumberInput"] { display: none !important; }
 
 /* BOTÓN — exactamente como en app.py original */
 .stButton>button {
@@ -301,19 +299,33 @@ else:
     nombre_real = ""
     if tienda and codigo_opcion:
         st.markdown('<div style="height:24px"></div>', unsafe_allow_html=True)
-        field_label("👤", "Nombre de la asesora")
+        field_label("👤", "Nombre del asesor")
         nombre_real = st.text_input("Nombre",
             placeholder="Escribe tu nombre completo…",
             label_visibility="collapsed", key="_nombre")
 
     venta = 0.0
+    venta_valida = True
     if tienda and codigo_opcion and nombre_real.strip():
         st.markdown('<div style="height:4px;background:linear-gradient(90deg,transparent,#E0DED9 20%,#E0DED9 80%,transparent);margin:20px 0 16px 0;"></div>', unsafe_allow_html=True)
         field_label("💰", "Venta del día")
-        venta = st.number_input("Venta", min_value=0.0, step=100000.0,
-                                format="%.0f", label_visibility="collapsed", key="_venta")
+        venta_str = st.text_input("Venta", placeholder="Ej: 450000",
+                                   label_visibility="collapsed", key="_venta_txt")
+        if venta_str.strip():
+            venta_limpia = venta_str.strip().replace(".","").replace(",","").replace("$","").replace(" ","")
+            if venta_limpia.isdigit():
+                venta = float(venta_limpia)
+                venta_valida = True
+            else:
+                st.markdown(
+                    '<p style="color:#C0392B;font-size:13px;font-weight:600;margin:6px 0 0 4px;">'
+                    '⚠ Por favor ingresa solo números</p>',
+                    unsafe_allow_html=True
+                )
+                venta_valida = False
         st.markdown('</div>', unsafe_allow_html=True)
     else:
+        venta_valida = True
         st.markdown('</div>', unsafe_allow_html=True)
 
     if st.session_state.confirmar_cero and tienda and codigo_opcion and nombre_real.strip():
@@ -333,7 +345,9 @@ else:
         with col_btn:
             label_btn = "✓  Confirmar venta $0 y guardar" if st.session_state.confirmar_cero else "✓  Guardar Asistencia"
             if st.button(label_btn, key="btn_guardar"):
-                if venta == 0 and not st.session_state.confirmar_cero:
+                if not venta_valida:
+                    st.error("⚠ Corrige el valor de la venta antes de guardar.")
+                elif venta == 0 and not st.session_state.confirmar_cero:
                     st.session_state.confirmar_cero = True
                     st.rerun()
                 else:
