@@ -28,25 +28,18 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"],
 }
 section[data-testid="stMain"] > div { padding: 0 !important; }
 
-/* ── Ocultar labels ── */
 div[data-testid="stSelectbox"] label,
 div[data-testid="stTextInput"] label,
 div[data-testid="stNumberInput"] label { display:none !important; }
 
-/* ── Selectbox — misma altura que text input ── */
+/* Selectbox */
 div[data-testid="stSelectbox"] > div > div[data-baseweb="select"] > div {
-    font-family: Outfit,sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    border: 1.5px solid #E0DED9 !important;
-    border-radius: 12px !important;
-    background: #FAFAFA !important;
-    color: #16150F !important;
-    height: 52px !important;
-    padding: 0 16px !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
+    font-family: Outfit,sans-serif !important; font-size: 15px !important;
+    font-weight: 500 !important; border: 1.5px solid #E0DED9 !important;
+    border-radius: 12px !important; background: #FAFAFA !important;
+    color: #16150F !important; height: 52px !important;
+    padding: 0 16px !important; box-sizing: border-box !important;
+    display: flex !important; align-items: center !important;
 }
 div[data-testid="stSelectbox"] > div > div[data-baseweb="select"]:focus-within > div {
     border-color: #2A4D0F !important;
@@ -54,84 +47,71 @@ div[data-testid="stSelectbox"] > div > div[data-baseweb="select"]:focus-within >
     background: #fff !important;
 }
 
-/* ── Text input ── */
+/* Text input */
 div[data-testid="stTextInput"] > div > div > input {
-    font-family: Outfit,sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    border: 1.5px solid #E0DED9 !important;
-    border-radius: 12px !important;
-    background: #FAFAFA !important;
-    color: #16150F !important;
-    height: 52px !important;
-    padding: 0 20px !important;
-    box-sizing: border-box !important;
+    font-family: Outfit,sans-serif !important; font-size: 15px !important;
+    font-weight: 500 !important; border: 1.5px solid #E0DED9 !important;
+    border-radius: 12px !important; background: #FAFAFA !important;
+    color: #16150F !important; height: 52px !important;
+    padding: 0 20px !important; box-sizing: border-box !important;
 }
 div[data-testid="stTextInput"] > div > div > input:focus {
     border-color: #2A4D0F !important;
-    box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important;
-    background: #fff !important;
+    box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important; background: #fff !important;
 }
 div[data-testid="stTextInput"] > div > div > input::placeholder {
     color: #CACAC5 !important; font-weight: 400 !important;
 }
 
-/* ── Number input ── */
+/* Number input — sin el tag COP, input simple */
 div[data-testid="stNumberInput"] > div {
-    border: 1.5px solid #E0DED9 !important;
-    border-radius: 12px !important;
-    background: #FAFAFA !important;
-    height: 52px !important;
-    display: flex !important;
-    align-items: center !important;
+    border: 1.5px solid #E0DED9 !important; border-radius: 12px !important;
+    background: #FAFAFA !important; height: 52px !important;
+    display: flex !important; align-items: center !important;
     overflow: hidden !important;
 }
 div[data-testid="stNumberInput"] > div > div > input {
-    font-family: Outfit,sans-serif !important;
-    font-size: 18px !important;
-    font-weight: 700 !important;
-    background: transparent !important;
-    color: #16150F !important;
-    text-align: right !important;
-    border: none !important;
-    box-shadow: none !important;
-    height: 52px !important;
-    padding: 0 16px !important;
+    font-family: Outfit,sans-serif !important; font-size: 18px !important;
+    font-weight: 700 !important; background: transparent !important;
+    color: #16150F !important; text-align: right !important;
+    border: none !important; box-shadow: none !important;
+    height: 52px !important; padding: 0 16px !important;
+}
+div[data-testid="stNumberInput"] button {
+    background: #F2F1EE !important; border: none !important;
+    color: #8C8A84 !important; font-size: 16px !important;
+    border-left: 1px solid #E0DED9 !important;
+    width: 36px !important; height: 26px !important;
+}
+div[data-testid="stNumberInput"] button:hover {
+    background: #EAF0E2 !important; color: #243F0C !important;
 }
 
-/* ── Botón — SIEMPRE verde sólido ── */
+/* BOTÓN PRINCIPAL — selector correcto para Streamlit nuevo */
+div[data-testid="stButton"] button[data-testid="stBaseButton-primary"],
+div[data-testid="stButton"] button[data-testid="stBaseButton-secondary"],
 div[data-testid="stButton"] > button {
-    font-family: Outfit,sans-serif !important;
-    border-radius: 12px !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    width: 100% !important;
-    height: 52px !important;
-    padding: 0 28px !important;
-    border: none !important;
-    background: #243F0C !important;
-    color: #fff !important;
-    transition: background 0.18s, box-shadow 0.18s !important;
+    font-family: Outfit,sans-serif !important; border-radius: 12px !important;
+    font-size: 15px !important; font-weight: 700 !important;
+    width: 100% !important; height: 52px !important;
+    padding: 0 28px !important; border: none !important;
+    background: #243F0C !important; color: #fff !important;
     cursor: pointer !important;
+    transition: background 0.18s !important;
 }
+div[data-testid="stButton"] button[data-testid="stBaseButton-primary"]:hover,
 div[data-testid="stButton"] > button:hover {
     background: #3A6618 !important;
     box-shadow: 0 8px 28px rgba(42,77,15,0.35) !important;
 }
-div[data-testid="stButton"] > button:active {
-    background: #1a2e09 !important;
-    transform: scale(0.99) !important;
-}
 
-/* ── Botón secundario (nuevo registro) ── */
-div[data-testid="stButton"] > button[kind="secondary"] {
-    background: #fff !important;
-    color: #243F0C !important;
+/* BOTÓN SECUNDARIO (nuevo registro) */
+div[data-testid="stButton"] button[data-testid="stBaseButton-secondary"] {
+    background: #fff !important; color: #243F0C !important;
     border: 2px solid #243F0C !important;
 }
-div[data-testid="stButton"] > button[kind="secondary"]:hover {
-    background: #EAF0E2 !important;
-    border-color: #3A6618 !important;
+div[data-testid="stButton"] button[data-testid="stBaseButton-secondary"]:hover {
+    background: #EAF0E2 !important; border-color: #3A6618 !important;
     box-shadow: none !important;
 }
 
@@ -209,7 +189,6 @@ st.markdown(f"""
 
 st.markdown('<div style="padding-top:56px;"></div>', unsafe_allow_html=True)
 
-# HELPERS
 def render_title():
     st.markdown(f"""
     <p style="font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
@@ -249,41 +228,33 @@ def render_steps(step, done_all=False):
     bg1,c1,l1=snum(1); bg2,c2,l2=snum(2); bg3,c3,l3=snum(3)
     return (
         '<div style="display:flex;border-bottom:1px solid #E0DED9;background:#F8F7F4;">'
-        + f'<div style="flex:1;padding:16px 24px;display:flex;align-items:center;gap:10px;border-right:1px solid #E0DED9;"><div style="width:24px;height:24px;border-radius:50%;background:{bg1};color:{c1};font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{l1}</div><span style="font-size:11px;{slbl(1)};">Tu tienda</span></div>'
-        + f'<div style="flex:1;padding:16px 24px;display:flex;align-items:center;gap:10px;border-right:1px solid #E0DED9;"><div style="width:24px;height:24px;border-radius:50%;background:{bg2};color:{c2};font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{l2}</div><span style="font-size:11px;{slbl(2)};">Tu nombre</span></div>'
-        + f'<div style="flex:1;padding:16px 24px;display:flex;align-items:center;gap:10px;"><div style="width:24px;height:24px;border-radius:50%;background:{bg3};color:{c3};font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{l3}</div><span style="font-size:11px;{slbl(3)};">Tu venta</span></div>'
-        + '</div>'
+        +f'<div style="flex:1;padding:16px 24px;display:flex;align-items:center;gap:10px;border-right:1px solid #E0DED9;"><div style="width:24px;height:24px;border-radius:50%;background:{bg1};color:{c1};font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{l1}</div><span style="font-size:11px;{slbl(1)};">Tu tienda</span></div>'
+        +f'<div style="flex:1;padding:16px 24px;display:flex;align-items:center;gap:10px;border-right:1px solid #E0DED9;"><div style="width:24px;height:24px;border-radius:50%;background:{bg2};color:{c2};font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{l2}</div><span style="font-size:11px;{slbl(2)};">Tu nombre</span></div>'
+        +f'<div style="flex:1;padding:16px 24px;display:flex;align-items:center;gap:10px;"><div style="width:24px;height:24px;border-radius:50%;background:{bg3};color:{c3};font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{l3}</div><span style="font-size:11px;{slbl(3)};">Tu venta</span></div>'
+        +'</div>'
     )
 
 def field_label(icon, text):
     st.markdown(
-        f'<p style="font-size:13px;font-weight:700;color:#3A3A38;margin:0 0 8px 0;">'
-        f'{icon} &nbsp;{text}</p>',
+        f'<p style="font-size:13px;font-weight:700;color:#3A3A38;margin:0 0 8px 0;">{icon} &nbsp;{text}</p>',
         unsafe_allow_html=True
     )
 
-# ─────────────────────────────────────────────────────────────────────────
-# PANTALLA ÉXITO
-# ─────────────────────────────────────────────────────────────────────────
+# ÉXITO
 if st.session_state.guardado:
     render_title()
     venta_fmt = f"${int(st.session_state.venta_guardada):,}".replace(",",".")
     st.markdown(
-        '<div style="background:#fff;border:1px solid #E0DED9;border-radius:20px;overflow:hidden;'
-        'box-shadow:0 4px 16px rgba(0,0,0,0.06);">'
+        '<div style="background:#fff;border:1px solid #E0DED9;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.06);">'
         + render_steps(3, done_all=True)
         + '<div style="padding:44px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">'
-        + '<div style="width:56px;height:56px;border-radius:50%;background:#243F0C;display:flex;align-items:center;justify-content:center;margin-bottom:4px;">'
-        + '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>'
-        + '</div>'
+        + '<div style="width:56px;height:56px;border-radius:50%;background:#243F0C;display:flex;align-items:center;justify-content:center;margin-bottom:4px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>'
         + '<p style="font-size:22px;font-weight:800;color:#16150F;letter-spacing:-0.3px;margin:0;">¡Registro guardado!</p>'
         + '<p style="font-size:14px;color:#8C8A84;line-height:1.6;margin:0;">Tu asistencia ha sido registrada con éxito.<br>¡Gracias por tu compromiso!</p>'
-        + '<div style="margin-top:12px;background:#F5F4F0;border:1px solid #E0DED9;border-radius:12px;'
-        + 'padding:18px 24px;font-size:13px;color:#8C8A84;line-height:2;width:100%;text-align:left;">'
+        + '<div style="margin-top:12px;background:#F5F4F0;border:1px solid #E0DED9;border-radius:12px;padding:18px 24px;font-size:13px;color:#8C8A84;line-height:2;width:100%;text-align:left;">'
         + f'<span style="color:#16150F;font-weight:600;">Tienda:</span> {st.session_state.tienda_guardada}<br>'
         + f'<span style="color:#16150F;font-weight:600;">Vendedora:</span> {st.session_state.nombre_guardado}<br>'
-        + f'<span style="color:#16150F;font-weight:600;">Código:</span> {st.session_state.codigo_num} &nbsp;·&nbsp;'
-        + f'<span style="color:#16150F;font-weight:600;">Zona:</span> {st.session_state.zona}<br>'
+        + f'<span style="color:#16150F;font-weight:600;">Código:</span> {st.session_state.codigo_num} &nbsp;·&nbsp;<span style="color:#16150F;font-weight:600;">Zona:</span> {st.session_state.zona}<br>'
         + f'<span style="color:#16150F;font-weight:600;">Venta registrada:</span> {venta_fmt} COP<br>'
         + f'<span style="color:#16150F;font-weight:600;">Fecha:</span> {fecha_larga}'
         + '</div></div></div>',
@@ -295,12 +266,9 @@ if st.session_state.guardado:
             del st.session_state[k]
         st.rerun()
 
-# ─────────────────────────────────────────────────────────────────────────
 # FORMULARIO
-# ─────────────────────────────────────────────────────────────────────────
 else:
     render_title()
-
     tiendas_unicas = sorted(df_codigos["nombre_tienda"].unique())
     _tienda = st.session_state.get("_tienda", "")
     _codigo = st.session_state.get("_codigo", "")
@@ -309,25 +277,19 @@ else:
     if _tienda: step = 2
     if _tienda and _codigo and len(str(_nombre).strip()) > 1: step = 3
 
-    # Abrir card
     st.markdown(
-        '<div style="background:#fff;border:1px solid #E0DED9;border-radius:20px;overflow:hidden;'
-        'box-shadow:0 4px 16px rgba(0,0,0,0.06);">'
+        '<div style="background:#fff;border:1px solid #E0DED9;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.06);">'
         + render_steps(step),
         unsafe_allow_html=True
     )
-
-    # Body
     st.markdown('<div style="padding:32px 44px 28px;">', unsafe_allow_html=True)
 
-    # TIENDA
     field_label("🏬", "Tienda")
     tienda = st.selectbox("Tienda",
         options=[""] + tiendas_unicas,
         format_func=lambda x: "Selecciona tu tienda…" if x == "" else x,
         index=0, label_visibility="collapsed", key="_tienda")
 
-    # CÓDIGO
     codigo_opcion = None
     if tienda:
         st.markdown('<div style="height:24px"></div>', unsafe_allow_html=True)
@@ -337,7 +299,6 @@ else:
             options=[""] + list(df_f["nombre_vendedor"].unique()),
             format_func=lambda x: "Selecciona el código asignado…" if x == "" else x,
             index=0, label_visibility="collapsed", key="_codigo")
-
         if codigo_opcion:
             row = df_f[df_f["nombre_vendedor"] == codigo_opcion].iloc[0]
             st.session_state.codigo_num  = row["codigo_vendedor"]
@@ -345,20 +306,16 @@ else:
             st.session_state.supervisora = str(row["Supervisora"])
             st.markdown(
                 '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;">'
-                + '<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
-                +   '<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Código</div>'
-                +   f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.codigo_num}</div></div>'
-                + '<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
-                +   '<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Zona</div>'
-                +   f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.zona}</div></div>'
-                + '<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
-                +   '<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Supervisora</div>'
-                +   f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.supervisora}</div></div>'
-                + '</div>',
+                +'<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;"><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Código</div>'
+                +f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.codigo_num}</div></div>'
+                +'<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;"><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Zona</div>'
+                +f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.zona}</div></div>'
+                +'<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;"><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Supervisora</div>'
+                +f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.supervisora}</div></div>'
+                +'</div>',
                 unsafe_allow_html=True
             )
 
-    # NOMBRE
     nombre_real = ""
     if tienda and codigo_opcion:
         st.markdown('<div style="height:24px"></div>', unsafe_allow_html=True)
@@ -367,41 +324,26 @@ else:
             placeholder="Escribe tu nombre completo…",
             label_visibility="collapsed", key="_nombre")
 
-    # VENTA
     venta = 0.0
     if tienda and codigo_opcion and nombre_real.strip():
         st.markdown('<div style="height:4px;background:linear-gradient(90deg,transparent,#E0DED9 20%,#E0DED9 80%,transparent);margin:20px 0 16px 0;"></div>', unsafe_allow_html=True)
         field_label("💰", "Venta del día")
-        col_cop, col_num = st.columns([1, 5])
-        with col_cop:
-            st.markdown(
-                '<div style="height:52px;background:#F2F1EE;border:1.5px solid #E0DED9;'
-                'border-radius:12px;display:flex;align-items:center;justify-content:center;'
-                'font-size:12px;font-weight:700;color:#8C8A84;letter-spacing:1px;">COP $</div>',
-                unsafe_allow_html=True
-            )
-        with col_num:
-            venta = st.number_input("Venta", min_value=0.0, step=100000.0, format="%.0f",
-                                    label_visibility="collapsed", key="_venta")
+        venta = st.number_input("Venta", min_value=0.0, step=100000.0, format="%.0f",
+                                label_visibility="collapsed", key="_venta")
 
-    # Cerrar body
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # WARNING $0
     if st.session_state.confirmar_cero and tienda and codigo_opcion and nombre_real.strip():
         st.markdown(
             '<div style="background:#FFFBEB;border-top:1px solid #E8D060;border-bottom:1px solid #E8D060;'
             'padding:14px 44px;font-size:13px;color:#5C4500;line-height:1.6;">'
-            '<strong>⚠ Venta igual a $0</strong> — Si la tienda no tuvo venta hoy, confírmalo abajo.'
-            '</div>',
+            '<strong>⚠ Venta igual a $0</strong> — Si la tienda no tuvo venta hoy, confírmalo abajo.</div>',
             unsafe_allow_html=True
         )
 
-    # FOOTER CARD
     if tienda and codigo_opcion and nombre_real.strip():
         st.markdown(
-            '<div style="padding:20px 44px 24px;background:#F8F7F4;'
-            'border-top:1px solid #E0DED9;border-radius:0 0 20px 20px;">',
+            '<div style="padding:20px 44px 24px;background:#F8F7F4;border-top:1px solid #E0DED9;border-radius:0 0 20px 20px;">',
             unsafe_allow_html=True
         )
         col_btn, col_note = st.columns([3, 2])
@@ -443,7 +385,6 @@ else:
             )
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # Cerrar card
     st.markdown('</div>', unsafe_allow_html=True)
 
 # BOTTOM
