@@ -13,6 +13,7 @@ MANTRA_B64 = """/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQw
 
 st.markdown("""<style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"],
 [data-testid="stAppViewContainer"] > .main {
     background-color: #ECEAE6 !important;
@@ -26,73 +27,119 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"],
     margin-right: auto !important;
 }
 section[data-testid="stMain"] > div { padding: 0 !important; }
+
+/* ── Ocultar labels ── */
 div[data-testid="stSelectbox"] label,
 div[data-testid="stTextInput"] label,
 div[data-testid="stNumberInput"] label { display:none !important; }
-div[data-testid="stSelectbox"] > div > div {
-    font-family: Outfit,sans-serif !important; font-size: 15px !important;
-    font-weight: 500 !important; border: 1.5px solid #E0DED9 !important;
-    border-radius: 12px !important; background: #FAFAFA !important;
-    color: #16150F !important; min-height: 52px !important; padding: 0 20px !important;
+
+/* ── Selectbox — misma altura que text input ── */
+div[data-testid="stSelectbox"] > div > div[data-baseweb="select"] > div {
+    font-family: Outfit,sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    border: 1.5px solid #E0DED9 !important;
+    border-radius: 12px !important;
+    background: #FAFAFA !important;
+    color: #16150F !important;
+    height: 52px !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
 }
-div[data-testid="stSelectbox"] > div > div:focus-within {
+div[data-testid="stSelectbox"] > div > div[data-baseweb="select"]:focus-within > div {
     border-color: #2A4D0F !important;
-    box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important; background: #fff !important;
+    box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important;
+    background: #fff !important;
 }
+
+/* ── Text input ── */
 div[data-testid="stTextInput"] > div > div > input {
-    font-family: Outfit,sans-serif !important; font-size: 15px !important;
-    font-weight: 500 !important; border: 1.5px solid #E0DED9 !important;
-    border-radius: 12px !important; background: #FAFAFA !important;
-    color: #16150F !important; padding: 14px 20px !important;
-    height: 52px !important; box-sizing: border-box !important;
+    font-family: Outfit,sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    border: 1.5px solid #E0DED9 !important;
+    border-radius: 12px !important;
+    background: #FAFAFA !important;
+    color: #16150F !important;
+    height: 52px !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
 }
 div[data-testid="stTextInput"] > div > div > input:focus {
     border-color: #2A4D0F !important;
-    box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important; background: #fff !important;
+    box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important;
+    background: #fff !important;
 }
 div[data-testid="stTextInput"] > div > div > input::placeholder {
     color: #CACAC5 !important; font-weight: 400 !important;
 }
+
+/* ── Number input ── */
 div[data-testid="stNumberInput"] > div {
-    border: 1.5px solid #E0DED9 !important; border-radius: 12px !important;
-    background: #FAFAFA !important; overflow: hidden !important; min-height: 52px !important;
+    border: 1.5px solid #E0DED9 !important;
+    border-radius: 12px !important;
+    background: #FAFAFA !important;
+    height: 52px !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
 }
 div[data-testid="stNumberInput"] > div > div > input {
-    font-family: Outfit,sans-serif !important; font-size: 20px !important;
-    font-weight: 700 !important; background: transparent !important;
-    color: #16150F !important; text-align: right !important;
-    border: none !important; box-shadow: none !important; padding: 14px 20px !important;
+    font-family: Outfit,sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    background: transparent !important;
+    color: #16150F !important;
+    text-align: right !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 52px !important;
+    padding: 0 16px !important;
 }
+
+/* ── Botón — SIEMPRE verde sólido ── */
 div[data-testid="stButton"] > button {
-    font-family: Outfit,sans-serif !important; border-radius: 12px !important;
-    font-size: 15px !important; font-weight: 700 !important; width: 100% !important;
-    padding: 16px 28px !important; border: none !important;
-    background: rgba(36,63,12,0.88) !important; color: #fff !important;
-    transition: background 0.18s !important; cursor: pointer !important;
+    font-family: Outfit,sans-serif !important;
+    border-radius: 12px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    width: 100% !important;
+    height: 52px !important;
+    padding: 0 28px !important;
+    border: none !important;
+    background: #243F0C !important;
+    color: #fff !important;
+    transition: background 0.18s, box-shadow 0.18s !important;
+    cursor: pointer !important;
 }
 div[data-testid="stButton"] > button:hover {
-    background: #243F0C !important; box-shadow: 0 8px 28px rgba(42,77,15,0.35) !important;
+    background: #3A6618 !important;
+    box-shadow: 0 8px 28px rgba(42,77,15,0.35) !important;
 }
 div[data-testid="stButton"] > button:active {
-    background: #1a2e09 !important; transform: scale(0.99) !important;
+    background: #1a2e09 !important;
+    transform: scale(0.99) !important;
 }
+
+/* ── Botón secundario (nuevo registro) ── */
 div[data-testid="stButton"] > button[kind="secondary"] {
-    background: #fff !important; color: #243F0C !important;
-    border: 2px solid #243F0C !important; font-weight: 700 !important;
+    background: #fff !important;
+    color: #243F0C !important;
+    border: 2px solid #243F0C !important;
 }
 div[data-testid="stButton"] > button[kind="secondary"]:hover {
-    background: #EAF0E2 !important; border-color: #3A6618 !important;
+    background: #EAF0E2 !important;
+    border-color: #3A6618 !important;
+    box-shadow: none !important;
 }
+
 .stAlert { border-radius: 12px !important; }
 div[data-testid="stVerticalBlock"] > div { gap: 0 !important; }
-
-/* Forzar que los widgets de streamlit no tengan padding extra */
 div[data-testid="stSelectbox"],
 div[data-testid="stTextInput"],
-div[data-testid="stNumberInput"] {
-    margin-bottom: 0 !important;
-    padding: 0 !important;
-}
+div[data-testid="stNumberInput"] { margin: 0 !important; padding: 0 !important; }
 </style>""", unsafe_allow_html=True)
 
 # FECHA
@@ -140,9 +187,8 @@ hoja = conectar_google_sheets()
 
 # HEADER
 st.markdown(f"""
-<div style="background:#0E0E0C;padding:0 52px;height:68px;display:flex;
-            align-items:center;justify-content:space-between;
-            border-bottom:1px solid #1f1f1c;box-sizing:border-box;
+<div style="background:#0E0E0C;padding:0 52px;height:68px;display:flex;align-items:center;
+            justify-content:space-between;border-bottom:1px solid #1f1f1c;box-sizing:border-box;
             margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);width:100vw;">
   <div style="display:flex;align-items:center;gap:16px;">
     <img src="data:image/png;base64,{MOMA_B64}" style="height:30px;" alt="MOMA"/>
@@ -150,9 +196,9 @@ st.markdown(f"""
     <img src="data:image/png;base64,{MANTRA_B64}" style="height:28px;" alt="MANTRA"/>
   </div>
   <div style="display:flex;align-items:center;gap:12px;">
-    <span style="font-family:Outfit,sans-serif;font-size:10px;font-weight:500;letter-spacing:2.5px;
-                 text-transform:uppercase;color:#505050;padding:6px 14px;
-                 border:1px solid #2a2a28;border-radius:100px;">Control Comercial</span>
+    <span style="font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;
+                 color:#505050;padding:6px 14px;border:1px solid #2a2a28;border-radius:100px;">
+      Control Comercial</span>
     <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#606060;">
       <div style="width:6px;height:6px;background:#4CAF50;border-radius:50%;"></div>
       En línea
@@ -163,7 +209,7 @@ st.markdown(f"""
 
 st.markdown('<div style="padding-top:56px;"></div>', unsafe_allow_html=True)
 
-# TITLE
+# HELPERS
 def render_title():
     st.markdown(f"""
     <p style="font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
@@ -193,7 +239,6 @@ def render_title():
     </div>
     """, unsafe_allow_html=True)
 
-# STEPS
 def render_steps(step, done_all=False):
     def snum(n):
         if done_all or n < step: return ("#3A6618","#fff","✓")
@@ -210,11 +255,10 @@ def render_steps(step, done_all=False):
         + '</div>'
     )
 
-# LABEL para campos — más grande y notorio
 def field_label(icon, text):
     st.markdown(
-        f'<p style="font-size:13px;font-weight:700;color:#3A3A38;margin:0 0 8px 0;'
-        f'display:flex;align-items:center;gap:6px;">{icon} &nbsp;{text}</p>',
+        f'<p style="font-size:13px;font-weight:700;color:#3A3A38;margin:0 0 8px 0;">'
+        f'{icon} &nbsp;{text}</p>',
         unsafe_allow_html=True
     )
 
@@ -242,9 +286,7 @@ if st.session_state.guardado:
         + f'<span style="color:#16150F;font-weight:600;">Zona:</span> {st.session_state.zona}<br>'
         + f'<span style="color:#16150F;font-weight:600;">Venta registrada:</span> {venta_fmt} COP<br>'
         + f'<span style="color:#16150F;font-weight:600;">Fecha:</span> {fecha_larga}'
-        + '</div>'
-        + '</div>'
-        + '</div>',
+        + '</div></div></div>',
         unsafe_allow_html=True
     )
     st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)
@@ -267,7 +309,7 @@ else:
     if _tienda: step = 2
     if _tienda and _codigo and len(str(_nombre).strip()) > 1: step = 3
 
-    # Abrir card completo
+    # Abrir card
     st.markdown(
         '<div style="background:#fff;border:1px solid #E0DED9;border-radius:20px;overflow:hidden;'
         'box-shadow:0 4px 16px rgba(0,0,0,0.06);">'
@@ -275,7 +317,7 @@ else:
         unsafe_allow_html=True
     )
 
-    # Body dentro del card
+    # Body
     st.markdown('<div style="padding:32px 44px 28px;">', unsafe_allow_html=True)
 
     # TIENDA
@@ -303,13 +345,13 @@ else:
             st.session_state.supervisora = str(row["Supervisora"])
             st.markdown(
                 '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;">'
-                + f'<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
+                + '<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
                 +   '<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Código</div>'
                 +   f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.codigo_num}</div></div>'
-                + f'<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
+                + '<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
                 +   '<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Zona</div>'
                 +   f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.zona}</div></div>'
-                + f'<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
+                + '<div style="background:#F5F4F0;border:1px solid #E0DED9;border-radius:10px;padding:12px 14px;">'
                 +   '<div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8C8A84;margin-bottom:5px;">Supervisora</div>'
                 +   f'<div style="font-size:14px;font-weight:700;color:#16150F;">{st.session_state.supervisora}</div></div>'
                 + '</div>',
@@ -330,8 +372,17 @@ else:
     if tienda and codigo_opcion and nombre_real.strip():
         st.markdown('<div style="height:4px;background:linear-gradient(90deg,transparent,#E0DED9 20%,#E0DED9 80%,transparent);margin:20px 0 16px 0;"></div>', unsafe_allow_html=True)
         field_label("💰", "Venta del día")
-        venta = st.number_input("Venta", min_value=0.0, step=100000.0, format="%.0f",
-                                label_visibility="collapsed", key="_venta")
+        col_cop, col_num = st.columns([1, 5])
+        with col_cop:
+            st.markdown(
+                '<div style="height:52px;background:#F2F1EE;border:1.5px solid #E0DED9;'
+                'border-radius:12px;display:flex;align-items:center;justify-content:center;'
+                'font-size:12px;font-weight:700;color:#8C8A84;letter-spacing:1px;">COP $</div>',
+                unsafe_allow_html=True
+            )
+        with col_num:
+            venta = st.number_input("Venta", min_value=0.0, step=100000.0, format="%.0f",
+                                    label_visibility="collapsed", key="_venta")
 
     # Cerrar body
     st.markdown('</div>', unsafe_allow_html=True)
