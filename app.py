@@ -22,7 +22,9 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"],
 [data-testid="stHeader"],[data-testid="stToolbar"],#MainMenu,footer { display:none !important; }
 .block-container {
     padding: 0 !important;
-    max-width: 100% !important;
+    max-width: 720px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 section[data-testid="stMain"] > div { padding: 0 !important; }
 div[data-testid="stSelectbox"] label,
@@ -104,7 +106,7 @@ hoja = conectar_google_sheets()
 
 # HEADER
 st.markdown(f"""
-<div style="background:#0E0E0C;padding:0 52px;height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1f1f1c;box-sizing:border-box;">
+<div style="background:#0E0E0C;padding:0 52px;height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1f1f1c;box-sizing:border-box;margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);width:100vw;">
   <div style="display:flex;align-items:center;gap:16px;">
     <img src="data:image/png;base64,{MOMA_B64}" style="height:30px;" alt="MOMA"/>
     <div style="width:1px;height:22px;background:#333330;"></div>
