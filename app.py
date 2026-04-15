@@ -32,7 +32,6 @@ div[data-testid="stSelectbox"] label,
 div[data-testid="stTextInput"] label,
 div[data-testid="stNumberInput"] label { display:none !important; }
 
-/* Selectbox */
 div[data-testid="stSelectbox"] > div > div[data-baseweb="select"] > div {
     font-family: Outfit,sans-serif !important; font-size: 15px !important;
     font-weight: 500 !important; border: 1.5px solid #E0DED9 !important;
@@ -43,11 +42,9 @@ div[data-testid="stSelectbox"] > div > div[data-baseweb="select"] > div {
 }
 div[data-testid="stSelectbox"] > div > div[data-baseweb="select"]:focus-within > div {
     border-color: #2A4D0F !important;
-    box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important;
-    background: #fff !important;
+    box-shadow: 0 0 0 4px rgba(42,77,15,0.10) !important; background: #fff !important;
 }
 
-/* Text input */
 div[data-testid="stTextInput"] > div > div > input {
     font-family: Outfit,sans-serif !important; font-size: 15px !important;
     font-weight: 500 !important; border: 1.5px solid #E0DED9 !important;
@@ -63,56 +60,44 @@ div[data-testid="stTextInput"] > div > div > input::placeholder {
     color: #CACAC5 !important; font-weight: 400 !important;
 }
 
-/* Number input — sin el tag COP, input simple */
 div[data-testid="stNumberInput"] > div {
     border: 1.5px solid #E0DED9 !important; border-radius: 12px !important;
     background: #FAFAFA !important; height: 52px !important;
-    display: flex !important; align-items: center !important;
     overflow: hidden !important;
 }
 div[data-testid="stNumberInput"] > div > div > input {
-    font-family: Outfit,sans-serif !important; font-size: 18px !important;
-    font-weight: 700 !important; background: transparent !important;
+    font-family: Outfit,sans-serif !important; font-size: 22px !important;
+    font-weight: 800 !important; background: transparent !important;
     color: #16150F !important; text-align: right !important;
     border: none !important; box-shadow: none !important;
     height: 52px !important; padding: 0 16px !important;
-}
-div[data-testid="stNumberInput"] button {
-    background: #F2F1EE !important; border: none !important;
-    color: #8C8A84 !important; font-size: 16px !important;
-    border-left: 1px solid #E0DED9 !important;
-    width: 36px !important; height: 26px !important;
-}
-div[data-testid="stNumberInput"] button:hover {
-    background: #EAF0E2 !important; color: #243F0C !important;
+    letter-spacing: -0.5px !important;
 }
 
-/* BOTÓN PRINCIPAL — selector correcto para Streamlit nuevo */
-div[data-testid="stButton"] button[data-testid="stBaseButton-primary"],
-div[data-testid="stButton"] button[data-testid="stBaseButton-secondary"],
-div[data-testid="stButton"] > button {
-    font-family: Outfit,sans-serif !important; border-radius: 12px !important;
-    font-size: 15px !important; font-weight: 700 !important;
-    width: 100% !important; height: 52px !important;
-    padding: 0 28px !important; border: none !important;
-    background: #243F0C !important; color: #fff !important;
-    cursor: pointer !important;
-    transition: background 0.18s !important;
+/* BOTÓN — exactamente como en app.py original */
+.stButton>button {
+    background-color: #243F0C;
+    color: white;
+    font-family: Outfit, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    border-radius: 14px;
+    height: 56px;
+    width: 100%;
+    border: none;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(36,63,12,0.3);
 }
-div[data-testid="stButton"] button[data-testid="stBaseButton-primary"]:hover,
-div[data-testid="stButton"] > button:hover {
-    background: #3A6618 !important;
-    box-shadow: 0 8px 28px rgba(42,77,15,0.35) !important;
+.stButton>button:hover {
+    background-color: #3A6618;
+    box-shadow: 0 6px 20px rgba(36,63,12,0.4);
 }
-
-/* BOTÓN SECUNDARIO (nuevo registro) */
-div[data-testid="stButton"] button[data-testid="stBaseButton-secondary"] {
-    background: #fff !important; color: #243F0C !important;
-    border: 2px solid #243F0C !important;
-}
-div[data-testid="stButton"] button[data-testid="stBaseButton-secondary"]:hover {
-    background: #EAF0E2 !important; border-color: #3A6618 !important;
-    box-shadow: none !important;
+.stButton>button:active {
+    background-color: #1a2e09;
+    transform: scale(0.99);
+    box-shadow: none;
 }
 
 .stAlert { border-radius: 12px !important; }
@@ -134,7 +119,6 @@ dia_str     = f"{now.day} de {MESES[now.month - 1]}"
 anio_str    = str(now.year)
 fecha_larga = f"{now.day} de {MESES[now.month - 1]} de {now.year}"
 
-# SESSION STATE
 for k, v in {"guardado": False, "confirmar_cero": False,
               "zona": "", "supervisora": "", "codigo_num": None,
               "tienda_guardada": "", "nombre_guardado": "",
@@ -142,7 +126,6 @@ for k, v in {"guardado": False, "confirmar_cero": False,
     if k not in st.session_state:
         st.session_state[k] = v
 
-# CARGA BASE
 @st.cache_data
 def cargar_base(ruta, mtime):
     df = pd.read_excel(ruta, sheet_name="Base_codigos")
@@ -153,7 +136,6 @@ ruta       = "data/Base_codigos.xlsx"
 mtime      = os.path.getmtime(ruta)
 df_codigos = cargar_base(ruta, mtime)
 
-# GOOGLE SHEETS
 @st.cache_resource
 def conectar_google_sheets():
     cred = service_account.Credentials.from_service_account_info(
@@ -240,7 +222,7 @@ def field_label(icon, text):
         unsafe_allow_html=True
     )
 
-# ÉXITO
+# ── ÉXITO ─────────────────────────────────────────────────────────────────
 if st.session_state.guardado:
     render_title()
     venta_fmt = f"${int(st.session_state.venta_guardada):,}".replace(",",".")
@@ -261,12 +243,12 @@ if st.session_state.guardado:
         unsafe_allow_html=True
     )
     st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)
-    if st.button("＋  Hacer nuevo registro", type="secondary"):
+    if st.button("＋  Hacer nuevo registro"):
         for k in list(st.session_state.keys()):
             del st.session_state[k]
         st.rerun()
 
-# FORMULARIO
+# ── FORMULARIO ────────────────────────────────────────────────────────────
 else:
     render_title()
     tiendas_unicas = sorted(df_codigos["nombre_tienda"].unique())
@@ -328,8 +310,8 @@ else:
     if tienda and codigo_opcion and nombre_real.strip():
         st.markdown('<div style="height:4px;background:linear-gradient(90deg,transparent,#E0DED9 20%,#E0DED9 80%,transparent);margin:20px 0 16px 0;"></div>', unsafe_allow_html=True)
         field_label("💰", "Venta del día")
-        venta = st.number_input("Venta", min_value=0.0, step=100000.0, format="%.0f",
-                                label_visibility="collapsed", key="_venta")
+        venta = st.number_input("Venta", min_value=0.0, step=100000.0,
+                                format="%.0f", label_visibility="collapsed", key="_venta")
 
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -387,7 +369,6 @@ else:
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-# BOTTOM
 st.markdown(f"""
 <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px;padding-bottom:60px;">
   <span style="font-size:11px;color:#AEADA8;letter-spacing:1px;text-transform:uppercase;">Moma &amp; Mantra</span>
