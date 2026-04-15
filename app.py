@@ -66,12 +66,12 @@ div[data-testid="stNumberInput"] > div {
     overflow: hidden !important;
 }
 div[data-testid="stNumberInput"] > div > div > input {
-    font-family: Outfit,sans-serif !important; font-size: 22px !important;
+    font-family: Outfit,sans-serif !important; font-size: 26px !important;
     font-weight: 800 !important; background: transparent !important;
     color: #16150F !important; text-align: right !important;
     border: none !important; box-shadow: none !important;
-    height: 52px !important; padding: 0 16px !important;
-    letter-spacing: -0.5px !important;
+    height: 52px !important; padding: 0 20px !important;
+    letter-spacing: -1px !important;
 }
 
 /* BOTÓN — exactamente como en app.py original */
@@ -301,7 +301,7 @@ else:
     nombre_real = ""
     if tienda and codigo_opcion:
         st.markdown('<div style="height:24px"></div>', unsafe_allow_html=True)
-        field_label("👤", "Nombre del asesor")
+        field_label("👤", "Nombre de la asesora")
         nombre_real = st.text_input("Nombre",
             placeholder="Escribe tu nombre completo…",
             label_visibility="collapsed", key="_nombre")
@@ -312,8 +312,9 @@ else:
         field_label("💰", "Venta del día")
         venta = st.number_input("Venta", min_value=0.0, step=100000.0,
                                 format="%.0f", label_visibility="collapsed", key="_venta")
-
-    st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+    else:
+        st.markdown('</div>', unsafe_allow_html=True)
 
     if st.session_state.confirmar_cero and tienda and codigo_opcion and nombre_real.strip():
         st.markdown(
